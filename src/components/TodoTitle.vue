@@ -3,7 +3,11 @@
     <p class="title-message">{{ message }}</p>
     <p class="title-task">
       You've got
-      <span class="num-total">{{ taskTotal }}</span> tasks today.
+      <span class="title-task-count">
+        <em class="title-task-left">{{ propsdata.left }}</em>
+        <span v-if="propsdata.total" class="num-total"> / {{ propsdata.total }}</span>
+      </span>
+      tasks today.
     </p>
   </div>
 </template>
@@ -11,6 +15,11 @@
 <script>
 export default {
   name: 'TodoTitle',
+  props: {
+    propsdata: {
+      type: Object,
+    },
+  },
   data() {
     return {
       message: 'Hello, nana.',

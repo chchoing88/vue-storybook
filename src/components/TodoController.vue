@@ -9,12 +9,17 @@
         <option value="name-desc">Name Descending</option>
       </select>
     </div>
-    <button class="btn-allClear">Clear All</button>
+    <button class="btn-allClear" @click="clearTodo">Clear All</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'TodoController',
+  methods: {
+    clearTodo() {
+      this.$emit('clearAll');
+    },
+  },
 };
 </script>
