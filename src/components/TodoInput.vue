@@ -1,6 +1,12 @@
 <template>
   <div class="todo-add">
-    <input type="text" class="add-input" placeholder="Enter your task" v-model="newTodoItem" />
+    <input
+      type="text"
+      class="add-input"
+      placeholder="Enter your task"
+      v-model="newTodoItem"
+      @keypress.enter="addTodoItem"
+    />
     <button class="btn-add" @click="addTodoItem">Add</button>
   </div>
 </template>

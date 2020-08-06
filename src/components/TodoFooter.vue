@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">Made by nana with 💛</footer>
+  <footer class="footer">Made by ho with 💛</footer>
 </template>
 
 <script>
