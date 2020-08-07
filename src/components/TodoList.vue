@@ -17,6 +17,8 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex';
+
 export default {
   name: 'TodoList',
   props: {
@@ -24,15 +26,15 @@ export default {
       type: Array,
     },
   },
+  computed: {
+    // ...mapState(['Todo/todoItems']),
+  },
+
   methods: {
     toggleComplete(todoItem) {
-      // todoItem.completed = !todoItem.completed;
-      // localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
       this.$emit('toggleItem', todoItem);
     },
     removeTodo(todoItem, index) {
-      // localStorage.removeItem(todoItem.item);
-      // this.todoItems.splice(index, 1);
       this.$emit('removeItem', todoItem, index);
     },
   },

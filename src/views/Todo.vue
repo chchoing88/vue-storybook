@@ -27,6 +27,8 @@ import TodoHello from '../components/TodoHello';
 import { getDate } from '../utils/lib';
 import Modal from '../components/common/Modal';
 
+import * as todoStore from '../store/modules/todo/Todo';
+
 export default {
   name: 'Todo',
   components: {
@@ -43,11 +45,15 @@ export default {
     return {
       showModal: false,
       userName: '',
-      todoItems: [],
+      // todoItems: [],
       modalText: '',
     };
   },
   computed: {
+    ...todoStore.mapState({
+      todoItems: (state) => state.todoItems,
+    }),
+
     checkCount() {
       const total = this.todoItems.length;
       const left = this.todoItems.filter((todoItem) => !todoItem.completed).length;
@@ -61,16 +67,18 @@ export default {
   created() {
     this.userName = localStorage.getItem('userName');
 
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i += 1) {
-        if (
-          localStorage.key(i) !== 'userName' &&
-          localStorage.key(i) !== 'loglevel:webpack-dev-server'
-        ) {
-          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        }
-      }
-    }
+    console.log(this.$store);
+
+    // if (localStorage.length > 0) {
+    //   for (let i = 0; i < localStorage.length; i += 1) {
+    //     if (
+    //       localStorage.key(i) !== 'userName' &&
+    //       localStorage.key(i) !== 'loglevel:webpack-dev-server'
+    //     ) {
+    //       this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    //     }
+    //   }
+    // }
   },
   methods: {
     soertTodoLatest() {
